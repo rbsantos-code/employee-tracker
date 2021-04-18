@@ -20,4 +20,3 @@ VALUES
     ('Lawyer', 180000, 4);
 
 
-INSERT INTO empoyees (first_name, last_name, role_id)
