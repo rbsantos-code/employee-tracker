@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS departments;
 DROP TABLE IF EXISTS roles;
-DROP TABLE IF EXISTS employees;
+DROP TABLE IF EXISTS employee;
 
 CREATE TABLE departments (
     id INTEGER AUTO_INCREMENT,
