@@ -17,3 +17,11 @@ CREATE TABLE roles (
 );
 
 
+CREATE TABLE employees (
+    id INTEGER AUTO_INCREMENT,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    role_id INTEGER(10) NOT NULL,
+    manager_id INTEGER(10) NULL,
+    PRIMARY KEY(id)
+);
