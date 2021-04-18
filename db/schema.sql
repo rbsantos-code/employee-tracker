@@ -15,6 +15,7 @@ CREATE TABLE roles (
     salary DECIMAL NOT NULL,
     department_id INTEGER,
     PRIMARY KEY (id)
+    CONSTRAINT fk_departments FOREIGN KEY (department_id) REFERENCES departments(id)
 );
 
 

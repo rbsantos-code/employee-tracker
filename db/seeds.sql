@@ -18,3 +18,6 @@ VALUES
     ('Financial Analyst', 120000, 3),
     ('Legal Team Lead', 230000, 4),
     ('Lawyer', 180000, 4);
+
+
+INSERT INTO empoyees (first_name, last_name, role_id)
