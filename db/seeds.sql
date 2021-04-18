@@ -20,3 +20,13 @@ VALUES
     ('Lawyer', 180000, 4);
 
 
+INSERT INTO employees (first_name, last_name, role_id)
+VALUES  
+    ('John', 'Doe', 2),
+    ('Mike', 'Chan', 3),
+    ('Ashley', 'Rodriquez', 4),
+    ('Kevin', 'Tupik', 5),
+    ('Malia', 'Brown', 6),
+    ('Sarah', 'Lourd', 7),
+    ('Tom', 'Anderson', 8),
+    ('Tony', 'Stark', 9);
