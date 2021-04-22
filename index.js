@@ -1,6 +1,6 @@
 // Dependencies
 const inquirer = require('inquirer');
-const db = require('./db/connection');
+const db = require('./db');
 
 
 // Function Section
@@ -44,7 +44,11 @@ function init() {
 
     // function view departments
     function viewDepartment() {
-        
+        db.departments()
+        .then(([rows]) => {
+            console.table(rows);
+        })
+        .then(() => teamPrompt());
     }
 
 

@@ -8,7 +8,7 @@ class dataBase {
     // Show departments 
     departments() {
         return this.connection.promise().query(
-            'SELECT departments.id, departments.department_name AS department FROM departments;'
+            'SELECT departments.id, departments.department_name AS department FROM departments ORDER BY id;'
         );
     }
 }
