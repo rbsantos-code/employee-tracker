@@ -22,7 +22,7 @@ class dataBase {
     // Show employees
     showEmployee() {
         return this.connection.promise().query(
-            'SELECT employee.first_name AS name, roles.title, departments.department_name AS department FROM employee LEFT JOIN roles ON employee.role_id = roles.id LEFT JOIN departments ON roles.department_id = departments.id;'
+            'SELECT employee.first_name AS name, roles.title, departments.department_name AS department, roles.salary FROM employee LEFT JOIN roles ON employee.role_id = roles.id LEFT JOIN departments ON roles.department_id = departments.id ORDER BY salary;'
         )
     }
 
