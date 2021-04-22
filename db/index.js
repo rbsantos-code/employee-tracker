@@ -11,6 +11,13 @@ class dataBase {
             'SELECT departments.id, departments.department_name AS department FROM departments ORDER BY id;'
         );
     }
+
+    // Show roles
+    roles() {
+        return this.connection.promise().query(
+            'SELECT roles.id, roles.title, departments.department_name AS department FROM roles LEFT JOIN departments ON roles.department_id = departments.id;'
+        );
+    }
 }
 
 

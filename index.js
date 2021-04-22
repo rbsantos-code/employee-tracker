@@ -31,7 +31,7 @@ function init() {
                     viewDepartment();
                     break;
                 case 'View all roles':
-                    //add function
+                    viewRoles();
                     break;
                 case 'View all employees':
                     // add function
@@ -45,6 +45,15 @@ function init() {
     // function view departments
     function viewDepartment() {
         db.departments()
+        .then(([rows]) => {
+            console.table(rows);
+        })
+        .then(() => teamPrompt());
+    }
+
+    // function view roles
+    function viewRoles() {
+        db.roles()
         .then(([rows]) => {
             console.table(rows);
         })
