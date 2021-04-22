@@ -18,7 +18,15 @@ class dataBase {
             'SELECT roles.id, roles.title, departments.department_name AS department FROM roles LEFT JOIN departments ON roles.department_id = departments.id;'
         );
     }
-}
+
+    // Show employees
+    showEmployee() {
+        return this.connection.promise().query(
+            'SELECT employee.first_name AS name, roles.title, departments.department_name AS department FROM employee LEFT JOIN roles ON employee.role_id = roles.id LEFT JOIN departments ON roles.department_id = departments.id;'
+        )
+    }
+
+}   
 
 
 module.exports = new dataBase(connection);
