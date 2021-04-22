@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/rbsantos-code/employee-tracker#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "inquirer": "^8.0.0",
     "mysql2": "^2.2.5"
   },
   "devDependencies": {

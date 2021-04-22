@@ -1,7 +1,7 @@
 // Dependencies
-const { beforeAll } = require('@jest/globals');
 const inquirer = require('inquirer');
-const db = require('./db');
+const db = require('./db/connection');
+
 
 // Function Section
 function init() {
@@ -28,7 +28,7 @@ function init() {
         .then(userChoice => {
             switch (userChoice.viewTeam) {
                 case 'View all departments':
-                    // add function
+                    viewDepartment();
                     break;
                 case 'View all roles':
                     //add function
@@ -37,10 +37,26 @@ function init() {
                     // add function
                     break;
                 case 'Nothing':
-                    // add function
+                    quit();
             }
         });
     }
 
+    // function view departments
+    function viewDepartment() {
+        
+    }
+
+
+    // function quit
+    function quit() {
+        process.exit();
+    }
+
+    teamPrompt();
 
 }
+init();
+
+
+
