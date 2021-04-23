@@ -26,6 +26,13 @@ class dataBase {
         )
     }
 
+    // Show Managers
+    showManagers() {
+        return this.connection.promise().query(
+            'SELECT id, first_name, last_name  FROM employee WHERE id IN (1,4, 6, 8);'
+        )
+    }
+
 }   
 
 

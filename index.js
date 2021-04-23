@@ -19,6 +19,7 @@ function init() {
                     'View all departments',
                     'View all roles',
                     'View all employees',
+                    'View Managers',
                     'Nothing'
                 ]
 
@@ -35,6 +36,9 @@ function init() {
                     break;
                 case 'View all employees':
                     viewEmployees();
+                    break;
+                case 'View Managers':
+                    viewManagers();
                     break;
                 case 'Nothing':
                     quit();
@@ -63,6 +67,15 @@ function init() {
     // function view employees
     function viewEmployees() {
         db.showEmployee()
+        .then(([rows]) => {
+            console.table(rows);
+        })
+        .then(() => teamPrompt());
+    }
+
+    // function view managers
+    function viewManagers() {
+        db.showManagers()
         .then(([rows]) => {
             console.table(rows);
         })
