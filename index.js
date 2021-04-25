@@ -21,6 +21,7 @@ function init() {
                     'View all roles',
                     'Add new role',
                     'View all employees',
+                    'Add new employee',
                     'View Managers',
                     'Nothing'
                 ]
@@ -44,6 +45,9 @@ function init() {
                     break;
                 case 'View all employees':
                     viewEmployees();
+                    break;
+                case 'Add new employee':
+                    newEmployee();
                     break;
                 case 'View Managers':
                     viewManagers();
@@ -93,7 +97,7 @@ function init() {
     function newRole() {
         db.departments()
         .then(([rows]) => {
-            const addRole = rows.map(({ id, department_name }) => ({
+            const addDept = rows.map(({ id, department_name }) => ({
                name: department_name,
                value: id
 
@@ -114,7 +118,7 @@ function init() {
                     type: 'list',
                     name: 'department_id',
                     message: 'Choose department for this role',
-                    choices: addRole
+                    choices: addDept
                 }
             ])
             .then(role => {
@@ -134,6 +138,55 @@ function init() {
             console.table(rows);
         })
         .then(() => teamPrompt());
+    }
+
+
+    // function add employee
+    function newEmployee() {
+       
+        inquirer.prompt([
+            {
+                type: 'input',
+                name: 'first_name',
+                message: 'Enter employee first name'
+            },
+            {
+                type: 'input',
+                name: 'last_name',
+                message: 'Enter employee last name'
+            },
+            {
+                type: 'input',
+                name: 'role_id',
+                message: 'Choose role for employee',
+                validate: role_id => {
+                    if (role_id) {
+                        return true;
+                    } else {
+                        console.log('Provide an role id number');
+                        return false;
+                    }
+                }
+            }
+        ])
+        .then(employ => {
+            let firstName = employ.first_name;
+            let lastName = employ.last_name;
+            let roleId = employ.role_id;
+
+            db.showEmployee()
+            .then(([rows]) => {
+                rows = {
+                    first_name: firstName,
+                    last_name: lastName,
+                    role_id: roleId
+                }
+                db.addEmployee(rows)
+            })
+            .then(() => console.log('Added new employee'))
+            .then(() => teamPrompt())
+        })
+        
     }
 
     // function view managers
