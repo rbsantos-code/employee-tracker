@@ -33,6 +33,16 @@ class dataBase {
         )
     }
 
+
+    // additional functionality Section
+
+    // add depertment
+    addDepartment(departments) {
+        return this.connection.promise().query(
+            'INSERT INTO departments SET ?;', departments
+        )
+    }
+
 }   
 
 

@@ -17,6 +17,7 @@ function init() {
                 message: 'What do you want to do?',
                 choices: [ 
                     'View all departments',
+                    'Add new department',
                     'View all roles',
                     'View all employees',
                     'View Managers',
@@ -30,6 +31,9 @@ function init() {
             switch (userChoice.viewTeam) {
                 case 'View all departments':
                     viewDepartment();
+                    break;
+                case 'Add new department':
+                    newDepartment();
                     break;
                 case 'View all roles':
                     viewRoles();
@@ -53,6 +57,22 @@ function init() {
             console.table(rows);
         })
         .then(() => teamPrompt());
+    }
+
+    // function add department
+    function newDepartment() {
+        inquirer.prompt([
+            {
+                type: 'input',
+                name: 'department_name',
+                message: 'enter new department name'
+            }
+        ])
+        .then(dept => {
+            db.addDepartment(dept)
+            .then(() => console.log('Added new department!'))
+            .then(() => teamPrompt())
+        })
     }
 
     // function view roles
