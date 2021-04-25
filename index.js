@@ -19,6 +19,7 @@ function init() {
                     'View all departments',
                     'Add new department',
                     'View all roles',
+                    'Add new role',
                     'View all employees',
                     'View Managers',
                     'Nothing'
@@ -37,6 +38,9 @@ function init() {
                     break;
                 case 'View all roles':
                     viewRoles();
+                    break;
+                case 'Add new role':
+                    newRole();
                     break;
                 case 'View all employees':
                     viewEmployees();
@@ -75,6 +79,7 @@ function init() {
         })
     }
 
+
     // function view roles
     function viewRoles() {
         db.roles()
@@ -82,6 +87,44 @@ function init() {
             console.table(rows);
         })
         .then(() => teamPrompt());
+    }
+
+    // function add role
+    function newRole() {
+        db.departments()
+        .then(([rows]) => {
+            const addRole = rows.map(({ id, department_name }) => ({
+               name: department_name,
+               value: id
+
+            }));
+
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'title',
+                    message: 'enter role name'
+                },
+                {
+                    type: 'input',
+                    name: 'salary',
+                    message: 'Enter salary for this role'
+                },
+                {
+                    type: 'list',
+                    name: 'department_id',
+                    message: 'Choose department for this role',
+                    choices: addRole
+                }
+            ])
+            .then(role => {
+                db.addRole(role)
+                .then(() => console.log('Added new role to database!'))
+                .then(() => teamPrompt())
+            })
+
+        })
+    
     }
 
     // function view employees

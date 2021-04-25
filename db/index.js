@@ -43,6 +43,14 @@ class dataBase {
         )
     }
 
+    // add new role
+    addRole(roles) {
+        return this.connection.promise().query(
+            'INSERT INTO roles SET ?', roles
+        )
+    }
+
+
 }   
 
 
